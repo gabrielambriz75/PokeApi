@@ -5,11 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Mapper\" />
-    <Folder Include="Model\" />
-    <Folder Include="Infrastructure\" />
-    <Folder Include="DTO\" />
-    <Folder Include="Repository\" />
+    <Compile Remove="Migrations\20200814074018_MigracionTipo.cs" />
+    <Compile Remove="Migrations\20200814074018_MigracionTipo.Designer.cs" />
+    <Compile Remove="Migrations\20200814074215_MigracionTipo.cs" />
+    <Compile Remove="Migrations\20200814074215_MigracionTipo.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
