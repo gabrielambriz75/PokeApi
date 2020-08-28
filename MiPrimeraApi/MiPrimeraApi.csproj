@@ -9,6 +9,8 @@
     <Compile Remove="Migrations\20200814074018_MigracionTipo.Designer.cs" />
     <Compile Remove="Migrations\20200814074215_MigracionTipo.cs" />
     <Compile Remove="Migrations\20200814074215_MigracionTipo.Designer.cs" />
+    <Compile Remove="Migrations\20200828040713_Usuario.cs" />
+    <Compile Remove="Migrations\20200828040713_Usuario.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

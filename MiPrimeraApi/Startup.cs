@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -32,7 +33,12 @@ namespace MiPrimeraApi
         {
             services.AddScoped<IRegionRepository, RegionRepository>();
             services.AddScoped<ITipoRepository,TipoRepository>();
+            services.AddScoped<IUsuarioRepository,UsuarioRepository>();
 
+            services.AddScoped<ICategoriaRepository,CategoriaRepository>();
+           
+
+            services.AddAutoMapper(typeof(MiPrimeraApi.Mapper.CategoriaMapper));
             services.AddDbContext<CatalogoDbContext>(Options => Options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
        
             services.AddControllers();

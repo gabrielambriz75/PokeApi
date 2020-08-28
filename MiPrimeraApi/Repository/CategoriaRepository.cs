@@ -1,5 +1,6 @@
 ﻿using MiPrimeraApi.Infrastructure;
 using MiPrimeraApi.Model;
+using MiPrimeraApi.Repository.IRepository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MiPrimeraApi.Repository
 {
-  public class CategoriaRepository
+  public class CategoriaRepository:ICategoriaRepository
     {
 
         private readonly CatalogoDbContext _bdCatalogo;
@@ -34,6 +35,12 @@ namespace MiPrimeraApi.Repository
         {
             return _bdCatalogo.Categoria.Any(x => x.Nombre == Nombre);
         }
+
+        public bool ExisteCategoria(int Id)
+        {
+            return _bdCatalogo.Categoria.Any(x => x.IdCategoria == Id);
+        }
+
 
         public Categoria GetCategoria(int Id)
         {
@@ -70,5 +77,10 @@ namespace MiPrimeraApi.Repository
         
         }
 
+        public ICollection<Categoria> GetCategoria()
+        {
+            return _bdCatalogo.Categoria.ToList();
+            throw new NotImplementedException();
+        }
     }
 }

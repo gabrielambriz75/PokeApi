@@ -16,6 +16,7 @@ namespace MiPrimeraApi.Infrastructure
         public DbSet<Categoria> Categoria { get; set; }
         public DbSet<Region> Region { get; set; }
         public DbSet<Tipo> Tipo { get; set; }
+        public DbSet<Usuario> Usuario { get; set; }
 
     }
 }

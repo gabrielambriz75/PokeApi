@@ -11,8 +11,10 @@ namespace MiPrimeraApi.Repository.IRepository
         int CreateCategoria(Categoria DatosCategoria);
 
         ICollection<int> CreateCategoria(ICollection<Categoria> DatosCategoria);
-
+        ICollection<Categoria> GetCategoria();
+        Categoria GetCategoria(int Id);
         bool ExisteCategoria(string Nombre);
+        bool ExisteCategoria(int Id);
         bool DeleteCategoria(int Id);
         Categoria UpdateCategoria(Categoria DatosCategoria);
         ICollection<Categoria> UpdateCategoria(ICollection<Categoria> DatosCategoria);
