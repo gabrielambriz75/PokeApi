@@ -8,11 +8,13 @@ namespace MiPrimeraApi.Repository.IRepository
 {
     public interface IUsuarioRepository
     {
-        int CreateUsuario(Usuario DatosUsuario);
-        bool ExisteUsuario(string Correo);
-        bool ExisteUsuario(int Id);
-        bool Login(string Correo, string Contrasena);
+        ICollection<Usuario> GetUsuarios();
+        int CreateUsuario(Usuario DatosUsuario,string password);
+        bool ExisteUsuario(string UsuarioClientID);
+        bool ExisteUsuario(int IdUsuario);
+        Usuario Login(string Correo, string Contrasena);   
         Usuario GetUsuario(string Correo);
 
+        Usuario GetUsuario(int IdUsuario);
     }
 }

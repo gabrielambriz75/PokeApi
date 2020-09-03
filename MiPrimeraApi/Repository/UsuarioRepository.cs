@@ -17,21 +17,49 @@ namespace MiPrimeraApi.Repository
         {
             _bdUsuario = bdUsuario;
         }
-        public int CreateUsuario(Usuario DatosUsuario)
-        {
-            _bdUsuario.Add(DatosUsuario);
-            _bdUsuario.SaveChanges();
+        //public int CreateUsuario(Usuario DatosUsuario)
+        //{
+        //    _bdUsuario.Add(DatosUsuario);
+        //    _bdUsuario.SaveChanges();
 
-            return DatosUsuario.IdUsuario;
+        //    return DatosUsuario.IdUsuario;
             
+        //}
+
+        public int CreateUsuario(Usuario DatosUsuario, string password)
+        {
+            try
+            {
+                byte[] HashPassword, SaltPassword;
+                Criptography.CrearPasswordEncriptado(password, out HashPassword, out SaltPassword);
+                DatosUsuario.HashPassword = HashPassword;
+                DatosUsuario.SaltPass = SaltPassword;
+
+                _bdUsuario.Usuario.Add(DatosUsuario);
+                _bdUsuario.SaveChanges();
+                return DatosUsuario.IdUsuario;
+            }
+            catch (Exception ex)
+            {
+               
+                throw ex;
+            }
+         
+
+           
         }
 
+        public ICollection<Usuario> GetUsuarios()
+        {
+            var ListUsuarios = _bdUsuario.Usuario.ToList();
+            return ListUsuarios;
+            throw new NotImplementedException();
+        }
       
-
-        public bool ExisteUsuario(string Correo)
+        public bool ExisteUsuario(string UsuarioClientID)
         {
 
-            return _bdUsuario.Usuario.Any(x=>x.Correo == Correo);
+            return _bdUsuario.Usuario.Any(x => x.ClientId == UsuarioClientID);
             
         }
 
@@ -47,17 +75,31 @@ namespace MiPrimeraApi.Repository
          
         }
 
-        public bool Login(string Correo, string Contrasena)
-        {
-            var ItemUsuario = _bdUsuario.Usuario.
-                Where(x => x.Correo.Trim().ToUpper() == Correo.Trim().ToUpper()
-                   && x.Contrasena == Contrasena).FirstOrDefault();
+      
 
-            return ItemUsuario == null ? false : true;
+        public Usuario Login(string ClientId, string Contrasena)
+        {
+            var usuarioCredencial = _bdUsuario.Usuario.Where(x => x.ClientId == ClientId).FirstOrDefault();
+
+            if(usuarioCredencial == null)
+            {
+                return null;
+            }
+
+            if (!Criptography.ValidacionPassword(Contrasena, usuarioCredencial.HashPassword,usuarioCredencial.SaltPass))
+            {
+                return null;
+            }
+
+            return usuarioCredencial;
            
            
         }
 
-       
+        public Usuario GetUsuario(int IdUsuario)
+        {
+            return _bdUsuario.Usuario.Where(x => x.IdUsuario == IdUsuario).FirstOrDefault();
+            throw new NotImplementedException();
+        }
     }
 }

@@ -12,6 +12,9 @@ namespace MiPrimeraApi.Model
     {
         [Key]
         public int IdUsuario { get; set; }
+        public string ClientId { get; set; }
+        public byte[] HashPassword { get; set; }
+        public byte[] SaltPass { get; set; }
         [Required]
         [StringLength(50)]
         public string Nombre { get; set; }

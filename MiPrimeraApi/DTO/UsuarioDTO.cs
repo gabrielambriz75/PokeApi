@@ -18,5 +18,7 @@ namespace MiPrimeraApi.DTO
         public int IdUcreo { get; set; }
         public DateTime FechaModifico { get; set; }
         public int IdUModifico { get; set; }
+        public string ClientId { get; set; }
+        public byte[] HashPassword { get; set; }
     }
 }
