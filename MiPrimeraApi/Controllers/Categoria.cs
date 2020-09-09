@@ -12,6 +12,8 @@ namespace MiPrimeraApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    //[ApiExplorerSettings(GroupName = "CatalogoCategoriaAPI")]
+
     public class Categoria : ControllerBase
     {
         private readonly ICategoriaRepository _CategoriaRepo;
@@ -22,6 +24,12 @@ namespace MiPrimeraApi.Controllers
             _CategoriaRepo = CategoriaRepo;
             _Mapper = Mapper;
         }
+
+
+        /// <summary>
+        /// Aqui va la descripcion para lo que sirve este metodo
+        /// </summary>
+        /// <returns></returns>
 
         [HttpGet]
         public ActionResult GetCategoria()

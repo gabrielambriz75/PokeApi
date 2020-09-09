@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MiPrimeraApi</name>
+    </assembly>
+    <members>
+        <member name="M:MiPrimeraApi.Controllers.Categoria.GetCategoria">
+            <summary>
+            Aqui va la descripcion para lo que sirve este metodo
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

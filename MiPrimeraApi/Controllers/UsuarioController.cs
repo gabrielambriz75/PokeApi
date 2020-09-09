@@ -20,6 +20,7 @@ namespace MiPrimeraApi.Controllers
 {
     [Route("api/Usuarios")]
     [ApiController]
+    //[ApiExplorerSettings(GroupName = "APIUsuariosCatalogo")]
     public class UsuarioController : ControllerBase
     {
         private readonly IUsuarioRepository _UsuarioRepo;
@@ -134,7 +135,7 @@ namespace MiPrimeraApi.Controllers
 
             var claims = new[]
             {
-                new Claim(ClaimTypes.NameIdentifier,usuarioCredencial.ClientId.ToString()),
+            new Claim(ClaimTypes.NameIdentifier,usuarioCredencial.ClientId.ToString()),
             new Claim(ClaimTypes.Name, usuarioCredencial.ClientId)
             };
             //Secret para token
