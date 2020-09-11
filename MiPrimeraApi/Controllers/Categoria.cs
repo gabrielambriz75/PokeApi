@@ -12,7 +12,7 @@ namespace MiPrimeraApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    //[ApiExplorerSettings(GroupName = "CatalogoCategoriaAPI")]
+    [ApiExplorerSettings(GroupName = "CatalogoCategoriaAPI")]
 
     public class Categoria : ControllerBase
     {
@@ -43,7 +43,11 @@ namespace MiPrimeraApi.Controllers
             return Ok(LstCategoriaDTO);
         }
 
-
+        /// <summary>
+        /// Obtener las categorias por medio de su Id
+        /// </summary>
+        /// <param name="IdCategoria"></param>
+        /// <returns></returns>
         [HttpGet("{IdCategoria:int}",Name ="GetCategoria")]
         public ActionResult GetCategoria(int IdCategoria)
         {

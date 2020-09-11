@@ -10,10 +10,10 @@ namespace MiPrimeraApi.DTO
     {
         [Key]
         public int IdUsuario { get; set; }
-        [Required]
+        [Required(ErrorMessage ="El nombre usuario Correo o Guid es necesario")]
         public string ClientId { get; set; }
-        [Required]
-        [StringLength(12,MinimumLength =6)]
+        [Required(ErrorMessage ="La contraseña es requerida")]
+        [StringLength(12,MinimumLength =6,ErrorMessage ="Longitud no valida, debe ser entre 6 y 12 caracteres.")]
         public string Password { get; set; }
     }
 }

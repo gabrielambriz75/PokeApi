@@ -20,7 +20,7 @@ namespace MiPrimeraApi.Controllers
 {
     [Route("api/Usuarios")]
     [ApiController]
-    //[ApiExplorerSettings(GroupName = "APIUsuariosCatalogo")]
+    [ApiExplorerSettings(GroupName = "APIUsuariosCatalogo")]
     public class UsuarioController : ControllerBase
     {
         private readonly IUsuarioRepository _UsuarioRepo;
@@ -36,6 +36,8 @@ namespace MiPrimeraApi.Controllers
 
         [Authorize]
         [HttpGet]
+        [ProducesResponseType(200,Type=typeof(List<UsuarioDTO>))]
+        [ProducesResponseType(400,Type=typeof(List<UsuarioDTO>))]
         public ActionResult GetUsuarios()
         {
             var LstUsuario = _UsuarioRepo.GetUsuarios();
@@ -76,7 +78,16 @@ namespace MiPrimeraApi.Controllers
             return Ok(UsuarioDTO);
         }
 
+        /// <summary>
+        /// Crear un nuevo usuario validando que no exista
+        /// </summary>
+        /// <param name="UsuarioDTO"></param>
+        /// <returns></returns>
         [HttpPost("Registrar")]
+        [ProducesResponseType(201,Type=typeof(int))]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public ActionResult CreateUsuario([FromBody] UsuarioDTO UsuarioDTO)
         {
 
@@ -122,8 +133,8 @@ namespace MiPrimeraApi.Controllers
         }
 
 
-        [HttpGet("Login")]
-        public IActionResult Login(UsuarioAuthLoginDTO DatosRegistro)
+        [HttpPost("Login")]
+        public IActionResult Login( UsuarioAuthLoginDTO DatosRegistro)
         {
 
             var usuarioCredencial = _UsuarioRepo.Login(DatosRegistro.ClientId, DatosRegistro.Password);

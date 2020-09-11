@@ -10,5 +10,19 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:MiPrimeraApi.Controllers.Categoria.GetCategoria(System.Int32)">
+            <summary>
+            Obtener las categorias por medio de su Id
+            </summary>
+            <param name="IdCategoria"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MiPrimeraApi.Controllers.UsuarioController.CreateUsuario(MiPrimeraApi.DTO.UsuarioDTO)">
+            <summary>
+            Crear un nuevo usuario validando que no exista
+            </summary>
+            <param name="UsuarioDTO"></param>
+            <returns></returns>
+        </member>
     </members>
 </doc>
